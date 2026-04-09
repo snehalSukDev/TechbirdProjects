@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest kingkong-clone --typescript --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --yes)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\snehal\\\\Documents\\\\TechbirdProjects\\\\kingkong-clone\\\\components\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\snehal\\\\Documents\\\\TechbirdProjects\\\\kingkong-clone\\\\lib\")",
+      "Bash(npm run:*)"
+    ]
+  }
+}
