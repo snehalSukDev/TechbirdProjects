@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"ls C:/Users/snehal/Documents/TechbirdProjects/kingkong-clone/node_modules/ | grep -i lenis && cat C:/Users/snehal/Documents/TechbirdProjects/kingkong-clone/package.json\",\"description\":\"Che...",
-  "error": "Exit code 1",
-  "timestamp": "2026-04-07T06:13:15.091Z",
-  "retry_count": 2
-}

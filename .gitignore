@@ -1,0 +1,33 @@
+# Dependencies
+pillary/node_modules
+node_modules
+
+# Skills / agent tooling (not project code)
+skills/
+skills-lock.json
+referenceAssests/
+.agent/
+.omc/
+.trae/
+
+# Claude / AI config files
+AGENTS.md
+CLAUDE.md
+
+# Old project folder
+kingkong-clone/
+
+# Next.js
+pillary/.next/
+pillary/out/
+
+# Misc
+.DS_Store
+*.pem
+*.tsbuildinfo
+next-env.d.ts
+.env*
+.vercel
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
