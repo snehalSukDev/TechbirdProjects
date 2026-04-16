@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(vercel --scope team_hmgOzbViQXtQKW1h3Wjh6Fxs --yes)"
+    ]
+  }
+}
