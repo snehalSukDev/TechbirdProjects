@@ -110,6 +110,19 @@ export default function Services() {
       }}
     >
       <div className="py-32 md:py-48 bg-[#0f0520]">
+        {/* Background purple particle dots */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 rounded-full bg-[#7C3AED]/30"
+              style={{ left: `${8 + i * 8}%`, top: `${20 + (i % 4) * 20}%` }}
+              animate={{ y: [0, -20, 0], opacity: [0.2, 0.6, 0.2] }}
+              transition={{ duration: 3 + i * 0.4, repeat: Infinity, delay: i * 0.3, ease: "easeInOut" }}
+            />
+          ))}
+        </div>
+
         <div className="max-w-6xl mx-auto px-6">
           {/* Header */}
           <motion.div
@@ -135,10 +148,18 @@ export default function Services() {
                 initial={{ opacity: 0, y: 60 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: i * 0.15 }}
-                whileHover={{ y: -12, scale: 1.02 }}
-                className="rounded-2xl p-8 group transition-all duration-300 bg-[#1a0a35] border border-[#7C3AED]/30 hover:border-[#7C3AED]/60 cursor-pointer"
+                whileHover={{ y: -12, scale: 1.02, boxShadow: i === 0 ? "0 20px 60px rgba(124,58,237,0.25)" : "0 20px 60px rgba(6,182,212,0.25)" }}
+                className="rounded-2xl p-8 group transition-all duration-300 bg-[#1a0a35] border border-[#7C3AED]/30 hover:border-[#7C3AED]/60 cursor-pointer relative overflow-hidden"
                 style={{ transition: "box-shadow 0.3s" }}
               >
+                {/* Animated scan line */}
+                <motion.div
+                  className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"
+                  animate={{ top: ["0%", "100%", "0%"] }}
+                  transition={{ duration: 5 + i * 1.5, repeat: Infinity, ease: "linear" }}
+                  style={{ position: "absolute" }}
+                />
+
                 {/* Animated gradient top strip */}
                 <div
                   className={`h-1 -mx-8 -mt-8 mb-6 rounded-t-2xl bg-gradient-to-r ${svc.gradient} animated-gradient-bg`}
@@ -175,23 +196,25 @@ export default function Services() {
                   {svc.description}
                 </p>
 
-                {/* Features with stagger on hover */}
-                <ul className="space-y-2.5 mb-8">
-                  {svc.features.map((f, fi) => (
+                {/* Features with staggered entrance */}
+                <motion.ul
+                  className="space-y-2.5 mb-8"
+                  initial="hidden"
+                  animate={inView ? "show" : "hidden"}
+                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.3 + i * 0.15 } } }}
+                >
+                  {svc.features.map((f) => (
                     <motion.li
                       key={f}
                       className="flex items-center gap-3 text-white/70 text-sm"
-                      initial={{ opacity: 0.7 }}
+                      variants={{ hidden: { opacity: 0, x: -15 }, show: { opacity: 1, x: 0, transition: { duration: 0.4 } } }}
                       whileHover={{ opacity: 1, x: 4 }}
-                      transition={{ delay: fi * 0.05 }}
                     >
-                      <div
-                        className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${svc.gradient} flex-shrink-0`}
-                      />
+                      <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${svc.gradient} flex-shrink-0`} />
                       {f}
                     </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
 
                 {/* CTA */}
                 <motion.a

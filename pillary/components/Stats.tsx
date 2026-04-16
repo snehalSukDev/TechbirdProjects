@@ -123,6 +123,16 @@ function RotatingEarth({ inView }: { inView: boolean }) {
         />
       </div>
 
+      {/* Pulsing rings around the globe */}
+      {[1, 2, 3].map((ring) => (
+        <motion.div
+          key={ring}
+          className="absolute inset-0 rounded-full border border-[#5a9455]/20 pointer-events-none"
+          animate={{ scale: [1, 1.08 + ring * 0.06, 1], opacity: [0.4, 0, 0.4] }}
+          transition={{ duration: 3, repeat: Infinity, delay: ring * 0.8, ease: "easeOut" }}
+        />
+      ))}
+
       {/* Green glow dots */}
       {glowDots.map((dot, i) => (
         <motion.div
@@ -183,20 +193,21 @@ function StatCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={started ? { opacity: 1, y: 0 } : {}}
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      animate={started ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ duration: 0.7, delay }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(90,148,85,0.2)" }}
       className="bg-white rounded-2xl p-7 shadow-md cursor-default"
     >
       <p className="text-gray-700 font-semibold text-sm mb-2">{label}</p>
       <div className="w-8 h-[3px] bg-[#5a9455] rounded mb-5" />
-      <div className="text-5xl font-black text-[#1a5228] mb-3 leading-none">
-        {prefix}
-        {display}
-        {unit}
-        {suffix}
-      </div>
+      <motion.div
+        className="text-5xl font-black text-[#1a5228] mb-3 leading-none"
+        animate={started ? { scale: [1, 1.04, 1] } : {}}
+        transition={{ duration: 0.4, delay: delay + 2.2 }}
+      >
+        {prefix}{display}{unit}{suffix}
+      </motion.div>
       <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
     </motion.div>
   );
@@ -250,6 +261,14 @@ export default function Stats() {
       }}
     >
       <div className="pt-40 pb-24 bg-[#edf7e8]">
+        {/* Sweeping gradient animation */}
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at 50% 30%, rgba(90,148,85,0.08) 0%, transparent 60%)" }}
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
+
         {/* Subtle wave bg shape */}
         <div
           className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none"

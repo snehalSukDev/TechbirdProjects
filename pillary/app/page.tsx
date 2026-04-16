@@ -25,7 +25,7 @@ export default function Home() {
         <ValueProp />
         <Services />
         <Stats />
-        <GrowthSection />
+        {/* <GrowthSection /> */}
         <CaseStudies />
         <BrandLogoStrip />
         <BookSection />

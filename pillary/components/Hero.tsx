@@ -326,8 +326,21 @@ export default function Hero() {
         paddingBottom: "156px",
       }}
     >
-      {/* Background */}
+      {/* Video background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        style={{ opacity: 3.35 }}
+      >
+        <source src="/15517392_1920_1080_60fps.mp4" type="video/mp4" />
+      </video>
+
+      {/* Background overlays */}
       <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[#0a0a0a]/60" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#7C3AED]/8 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-[#06B6D4]/5 rounded-full blur-[100px]" />
         <div
@@ -355,14 +368,14 @@ export default function Hero() {
           className="max-w-5xl mx-auto text-center"
         >
           {/* Badge */}
-          <motion.div variants={item} className="flex justify-center mb-8">
+          {/* <motion.div variants={item} className="flex justify-center mb-8">
             <div className="gradient-border rounded-full px-5 py-2 inline-flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#7C3AED] pulse-glow" />
               <span className="text-white/80 text-sm font-medium">
                 $7.8 Billion in reported client revenue
               </span>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Headline with parallax */}
           <motion.div variants={item} style={{ y: headlineY }}>
@@ -378,12 +391,12 @@ export default function Hero() {
             </h2>
           </motion.div>
 
-          <motion.p
+          {/* <motion.p
             variants={item}
             className="text-[#7C3AED]/80 text-sm mt-3 mb-6"
           >
             *But it&apos;s 100% legal (pinky promise)
-          </motion.p>
+          </motion.p> */}
 
           {/* Typing subheading */}
           <motion.p
